@@ -1,7 +1,6 @@
 import pandas as pd
 from plotagem.logs import PASTA_LOGS, NAME_FORMAT
 pasta_logs = f'{PASTA_LOGS}/fragmentation.csv'
-
     
 def analise(df, minimum_process_occurrences):
     # Convert the datetime column to a datetime object
@@ -18,7 +17,6 @@ def analise(df, minimum_process_occurrences):
     df_filtered = df[df['process_occurrences'] >= minimum_process_occurrences]
         
     df_pivot = df_filtered.pivot(columns='process', values='process_occurrences')
-    
     
     ax = df_pivot.plot(ylabel='Process occurrences (qtt)', xlabel='Time(H)')
     ax.set_yticks(ax.get_yticks())
