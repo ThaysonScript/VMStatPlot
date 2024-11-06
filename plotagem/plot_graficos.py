@@ -60,6 +60,31 @@ def plot(
         )
         
         ax.plot(x, Y_pred, color='red')
+        
+        # intervalos
+        interval_1_duration = 12  # 12 horas
+        interval_2_duration = 72   # 3 dias (72 horas)
+
+        # máximo de tempo (x) dos dados
+        max_time = df.index.max()
+
+        # linha vertical no início de cada intervalo
+        current_time = 0
+        while current_time <= max_time:
+            # linha azul no início do ciclo de 12 horas
+            ax.axvline(x=current_time, color='blue', linestyle='--', label='start waiting phase' if current_time == 0 else None)
+            
+            # linha verde no início do ciclo de 3 dias
+            ax.axvline(x=current_time + interval_1_duration, color='green', linestyle='--', label='start stress phase' if current_time == 0 else None)
+
+            # atualizando tempo atual para o próximo ciclo de 3 dias
+            current_time += interval_1_duration + interval_2_duration  # Move para o próximo início de 12h + 3 dias
+
+        # Remover duplicatas de legenda
+        handles, labels = ax.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        ax.legend(by_label.values(), by_label.keys())
+            
         plt.show()
         
         fig = ax.get_figure()

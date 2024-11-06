@@ -18,7 +18,7 @@ def analise(df, minimum_process_occurrences):
         
     df_pivot = df_filtered.pivot(columns='process', values='process_occurrences')
     
-    ax = df_pivot.plot(ylabel='Process occurrences (qtt)', xlabel='Time(H)')
+    ax = df_pivot.plot(ylabel='Process occurrences (qtt)', xlabel='Time(H)', figsize=(10, 5))
     ax.set_yticks(ax.get_yticks())
     ax.set_yticklabels(ax.get_yticks().astype(int))
     
