@@ -12,7 +12,7 @@ from plotagem.logs import (
     jmeter
 )
 
-MINIMUM_PROCESS_OCCURRENCES :int = 5
+MINIMUM_PROCESS_OCCURRENCES :int = 2
 
 dir1 = Path("plotagem/plot_images")
 dir2 = Path("plotagem/registros de monitoramento dos testes de envelhecimento")
